@@ -1,6 +1,6 @@
 // UserProfile.test.js
 import React from 'react'
-import { render, screen } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 import UserProfile from './UserProfile'
 
 // Mocking the fetch function for testing purposes
@@ -35,9 +35,10 @@ describe('UserProfile Component', () => {
 
         expect(screen.getByText('Loading user data...')).toBeInTheDocument()
 
-        // const errorElement = await screen.findByText('Error fetching user:')
-
-        // expect(errorElement).toBeInTheDocument()
+        // await waitFor(() => {
+        //     const errorElement = screen.getByText('Error fetching user:')
+        //     expect(errorElement).toBeInTheDocument()
+        // })
 
         global.fetch.mockRestore()
     })
