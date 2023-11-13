@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 
 const UserProfile = ({ userId }) => {
     const [user, setUser] = useState(null)
-
+    const [error, setError] = useState(false)
     useEffect(() => {
         const fetchUser = async () => {
             try {
@@ -14,6 +14,7 @@ const UserProfile = ({ userId }) => {
                 setUser(userData)
             } catch (error) {
                 console.error('Error fetching user:', error)
+                setError(true)
             }
         }
 
@@ -30,6 +31,11 @@ const UserProfile = ({ userId }) => {
                 </div>
             ) : (
                 <p>Loading user data...</p>
+            )}
+            {error && (
+                <div>
+                    <p>Error fetching user</p>
+                </div>
             )}
         </div>
     )

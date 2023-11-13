@@ -35,10 +35,10 @@ describe('UserProfile Component', () => {
 
         expect(screen.getByText('Loading user data...')).toBeInTheDocument()
 
-        // await waitFor(() => {
-        //     const errorElement = screen.getByText('Error fetching user:')
-        //     expect(errorElement).toBeInTheDocument()
-        // })
+        await waitFor(() => {
+            const errorElement = screen.getByText('Error fetching user')
+            expect(errorElement).toBeInTheDocument()
+        })
 
         global.fetch.mockRestore()
     })
